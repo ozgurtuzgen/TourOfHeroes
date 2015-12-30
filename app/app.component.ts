@@ -2,32 +2,22 @@
  * Created by ozgur.tuzgen on 28.12.2015.
  */
 
-
-
-interface Hero{
-    id: number;
-    name: string;
-}
-
 import {Component} from 'angular2/core';
+import {Hero} from './hero';
+import {HeroDetailComponent} from './hero-detail.component';
+
 @Component({
     selector: 'my-app',
+    directives: [HeroDetailComponent],
     template: `
-    <h1>{{title}}</h1>
-    <div *ngIf="selectedHero">
-        <h2>{{selectedHero.name}} details!</h2>
-        <div><label>id: </label>{{selectedHero.id}}</div>
-        <div>
-            <label>name: </label>
-        <div><input [(ngModel)]="selectedHero.name" placeholder="name"></div>
-    </div>
-    </div>
+    <h1>{{title}}</h1>        
     <h2>My Heroes</h2>
     <ul class="heroes">
       <li [class.selected]="hero === selectedHero" *ngFor="#hero of heroes" (click)="onSelect(hero)">
         <span class="badge">{{hero.id}}</span> {{hero.name}}
       </li>
     </ul>
+    <my-hero-detail [hero]="selectedHero"></my-hero-detail>
     `,
     styles:[`
       .selected {
@@ -78,8 +68,6 @@ import {Component} from 'angular2/core';
       }
     `]
 })
-
-
 
 export class AppComponent{
     public title: string = 'Tour of Heroes';
