@@ -2,13 +2,15 @@
  * Created by ozgur.tuzgen on 28.12.2015.
  */
 
-import {Component} from 'angular2/core';
+import {Component,OnInit} from 'angular2/core';
 import {Hero} from './hero';
 import {HeroDetailComponent} from './hero-detail.component';
+import {HeroService} from "./hero.service";
 
 @Component({
     selector: 'my-app',
     directives: [HeroDetailComponent],
+    providers: [HeroService],
     template: `
     <h1>{{title}}</h1>        
     <h2>My Heroes</h2>
@@ -69,27 +71,23 @@ import {HeroDetailComponent} from './hero-detail.component';
     `]
 })
 
-export class AppComponent{
+export class AppComponent implements OnInit{
     public title: string = 'Tour of Heroes';
-    public heroes: Hero[] = HEROES;
+    public heroes: Hero[];
     public selectedHero: Hero;
+
+    constructor(private _heroService: HeroService){}
+
+    ngOnInit(){
+        this.getHeroes();
+    }
 
     onSelect(hero: Hero){
         this.selectedHero = hero;
     }
+
+    getHeroes(){
+        this._heroService.getHeroes().then(heroes=> this.heroes = heroes);
+    }
 }
-
-var HEROES : Hero[] = [
-    {"id":11,"name":"mr.Nice"},
-    {"id":12,"name":"Narco"},
-    {"id":13,"name":"Bombasto"},
-    {"id":14,"name":"Celeritas"},
-    {"id":15,"name":"Magneta"},
-    {"id":16,"name":"RubberMan"},
-    {"id":17,"name":"Dynama"},
-    {"id":18,"name":"Dr IQ"},
-    {"id":19,"name":"Magma"},
-    {"id":20,"name":"Tornado"}
-];
-
 
