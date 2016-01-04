@@ -14,6 +14,10 @@ import {HeroService} from "./hero.service";
     template: `
     <h1>{{title}}</h1>        
     <h2>My Heroes</h2>
+    <input #newHero
+      (keyup.enter)="addHero(newHero.value)"
+      (blur)="addHero(newHero.value); newHero.value='' ">
+    <button (click)=addHero(newHero.value)>Add</button>
     <ul class="heroes">
       <li [class.selected]="hero === selectedHero" *ngFor="#hero of heroes" (click)="onSelect(hero)">
         <span class="badge">{{hero.id}}</span> {{hero.name}}
@@ -76,6 +80,8 @@ export class AppComponent implements OnInit{
     public heroes: Hero[];
     public selectedHero: Hero;
 
+    public lastRecNumber: number = 55;
+
     constructor(private _heroService: HeroService){}
 
     ngOnInit(){
@@ -88,6 +94,16 @@ export class AppComponent implements OnInit{
 
     getHeroes(){
         this._heroService.getHeroes().then(heroes=> this.heroes = heroes);
+    }
+
+    addHero(newHero:string){
+        if(newHero) {
+            //this.heroes.push({"id":this.lastRecNumber++,"name":newHero});
+
+            var ref:Hero = {"id": this.lastRecNumber++, "name": newHero};
+
+            this.heroes.push(ref);
+        }
     }
 }
 
