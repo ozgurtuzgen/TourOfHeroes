@@ -5,15 +5,17 @@
 import {Component,OnInit} from 'angular2/core';
 import {Hero} from './hero';
 import {HeroDetailComponent} from './hero-detail.component';
+import {HeroFormComponent} from './hero-form.component';
 import {HeroService} from "./hero.service";
 
 @Component({
     selector: 'my-app',
-    directives: [HeroDetailComponent],
+    directives: [HeroDetailComponent,HeroFormComponent],
     providers: [HeroService],
     template: `
     <h1>{{title}}</h1>        
     <h2>My Heroes</h2>
+    <hero-form></hero-form>
     <input #newHero
       (keyup.enter)="addHero(newHero.value)"
       (blur)="addHero(newHero.value); newHero.value='' ">
@@ -100,7 +102,7 @@ export class AppComponent implements OnInit{
         if(newHero) {
             //this.heroes.push({"id":this.lastRecNumber++,"name":newHero});
 
-            var ref:Hero = {"id": this.lastRecNumber++, "name": newHero};
+            var ref:Hero = {"id": this.lastRecNumber++, "name": newHero,"power": "Really Smart","alterEgo":"Chuck Overstreet" };
 
             this.heroes.push(ref);
         }
