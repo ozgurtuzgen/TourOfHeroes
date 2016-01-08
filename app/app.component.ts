@@ -4,16 +4,16 @@
 
 import {Component,OnInit} from 'angular2/core';
 import {Hero} from './hero';
-import {HeroDetailComponent} from './hero-detail.component';
-import {HeroFormComponent} from './hero-form.component';
-import {HeroService} from "./hero.service";
+//import {HeroFormComponent} from './hero-form.component';
 import {RouteConfig,ROUTER_DIRECTIVES} from "angular2/router";
-import {HeroListComponent} from "./hero-list.component";
+import {HeroDetailComponent} from './heroes/hero-detail.component';
+import {HeroListComponent} from "./heroes/hero-list.component";
+import {HeroService} from "./heroes/hero.service";
 import {CrisisListComponent} from "./crisis-list.component";
 
 @Component({
     selector: 'my-app',
-    directives: [HeroDetailComponent,HeroFormComponent,ROUTER_DIRECTIVES],
+    directives: [ROUTER_DIRECTIVES],
     providers: [HeroService],
     template: `
     <h1>Component Router</h1>
@@ -37,59 +37,12 @@ import {CrisisListComponent} from "./crisis-list.component";
     //  </li>
     //</ul>
     //<my-hero-detail [hero]="selectedHero"></my-hero-detail>
-    //`,
-    styles:[`
-      .selected {
-        background-color: #CFD8DC !important;
-        color: white;
-      }
-      .heroes {
-        margin: 0 0 2em 0;
-        list-style-type: none;
-        padding: 0;
-        width: 10em;
-      }
-      .heroes li {
-        cursor: pointer;
-        position: relative;
-        left: 0;
-        background-color: #EEE;
-        margin: .5em;
-        padding: .3em 0em;
-        height: 1.6em;
-        border-radius: 4px;
-      }
-      .heroes li.selected:hover {
-        color: white;
-      }
-      .heroes li:hover {
-        color: #607D8B;
-        background-color: #EEE;
-        left: .1em;
-      }
-      .heroes .text {
-        position: relative;
-        top: -3px;
-      }
-      .heroes .badge {
-        display: inline-block;
-        font-size: small;
-        color: white;
-        padding: 0.8em 0.7em 0em 0.7em;
-        background-color: #607D8B;
-        line-height: 1em;
-        position: relative;
-        left: -1px;
-        top: -4px;
-        height: 1.8em;
-        margin-right: .8em;
-        border-radius: 4px 0px 0px 4px;
-      }
-    `]
+    //`
 })
 @RouteConfig([
-    {path:'/crisis-center', name:'CrisisCenter', component:CrisisListComponent},
-    {path:'/heroes', name:'Heroes', component:HeroListComponent}
+    {path:'/crisis-center', name:'CrisisCenter',    component:CrisisListComponent},
+    {path:'/heroes',        name:'Heroes',          component:HeroListComponent},
+    {path:'/hero/:id',      name:'HeroDetail',      component:HeroDetailComponent}
 ])
 
 export class AppComponent
