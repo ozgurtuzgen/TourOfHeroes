@@ -3,13 +3,13 @@
  */
 
 import {Component,OnInit} from 'angular2/core';
-import {Hero} from './hero';
+import {Hero} from './heroes/hero';
 //import {HeroFormComponent} from './hero-form.component';
 import {RouteConfig,ROUTER_DIRECTIVES} from "angular2/router";
 import {HeroDetailComponent} from './heroes/hero-detail.component';
 import {HeroListComponent} from "./heroes/hero-list.component";
 import {HeroService} from "./heroes/hero.service";
-import {CrisisListComponent} from "./crisis-list.component";
+import {CrisisCenterComponent} from "./crisis-center/crisis-center-component";
 
 @Component({
     selector: 'my-app',
@@ -40,9 +40,9 @@ import {CrisisListComponent} from "./crisis-list.component";
     //`
 })
 @RouteConfig([
-    {path:'/crisis-center', name:'CrisisCenter',    component:CrisisListComponent},
-    {path:'/heroes',        name:'Heroes',          component:HeroListComponent},
-    {path:'/hero/:id',      name:'HeroDetail',      component:HeroDetailComponent}
+    {path:'/crisis-center/...',     name:'CrisisCenter',    component:CrisisCenterComponent,   useAsDefault: true},
+    {path:'/heroes',                name:'Heroes',          component:HeroListComponent},
+    {path:'/hero/:id',              name:'HeroDetail',      component:HeroDetailComponent}
 ])
 
 export class AppComponent

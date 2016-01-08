@@ -1,10 +1,11 @@
 /**
- * Created by ozgur.tuzgen on 31.12.2015.
+ * Created by ozgur.tuzgen on 08.01.2016.
  */
-import {Hero} from './hero';
 
-export var  HEROES : Hero[] = [
-    {"id":11,"name":'mr.Nice'},
+import {Crisis} from './crisis';
+
+export var  CRISISLIST : Crisis[] = [
+    {"id":11,"name":"mr.Nice"},
     {"id":12,"name":"Narco"},
     {"id":13,"name":"Bombasto"},
     {"id":14,"name":"Celeritas"},

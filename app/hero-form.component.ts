@@ -1,6 +1,6 @@
 import {Component} from "angular2/core";
 import {NgForm} from "angular2/common";
-import {Hero} from './hero';
+import {Hero} from './heroes/hero';
 /**
  * Created by ozgur.tuzgen on 04.01.2016.
  */

@@ -2,7 +2,7 @@
  * Created by ozgur.tuzgen on 31.12.2015.
  */
 import {Injectable} from 'angular2/core';
-import {HEROES} from './../mock-heros';
+import {HEROES} from './mock-heros';
 
 @Injectable()
 export class HeroService{
