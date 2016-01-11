@@ -7,6 +7,7 @@ import {RouteConfig,RouterOutlet} from "angular2/router";
 import {CrisisService} from "./crisis.service";
 import {CrisisListComponent} from "./crisis-list.component";
 import {CrisisDetailComponent} from "./crisis-detail.component";
+import {DialogService} from "../dialog.service";
 
 @Component({
     template:`
@@ -14,7 +15,7 @@ import {CrisisDetailComponent} from "./crisis-detail.component";
         <router-outlet></router-outlet>
     `,
     directives: [RouterOutlet],
-    providers: [CrisisService]
+    providers: [CrisisService, DialogService]
 })
 @RouteConfig([
     {path:'/', name:'CrisisCenter', component:CrisisListComponent, useAsDefault:true},
