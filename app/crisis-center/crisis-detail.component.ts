@@ -32,8 +32,15 @@ export class CrisisDetailComponent implements OnInit, CanDeactivate{
     }
 
     ngOnInit() {
-        let id = this._routeParams.get('id');
-        this._crisisService.getCrisis(id).then(crisis => this.crisis = crisis);
+        let id = +this._routeParams.get('id');
+        this._crisisService.getCrisis(id).then(crisis => {
+            if (crisis) {
+                this.editName = crisis.name;
+                this.crisis = crisis;
+            } else { // id not found
+                this.gotoCrisisList();
+            }
+        });
     }
 
     routerCanDeactivate(nextInstruction:ComponentInstruction, prevInstruction:ComponentInstruction):any {
