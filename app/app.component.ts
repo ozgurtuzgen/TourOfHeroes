@@ -42,7 +42,8 @@ import {CrisisCenterComponent} from "./crisis-center/crisis-center-component";
 @RouteConfig([
     {path:'/crisis-center/...',     name:'CrisisCenter',    component:CrisisCenterComponent,   useAsDefault: true},
     {path:'/heroes',                name:'Heroes',          component:HeroListComponent},
-    {path:'/hero/:id',              name:'HeroDetail',      component:HeroDetailComponent}
+    {path:'/hero/:id',              name:'HeroDetail',      component:HeroDetailComponent},
+    {path: '/disaster',             name: 'Asteroid',       redirectTo: ['CrisisCenter', 'CrisisDetail', {id:3}]}
 ])
 
 export class AppComponent

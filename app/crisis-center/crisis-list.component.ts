@@ -2,14 +2,14 @@
  * Created by ozgur.tuzgen on 08.01.2016.
  */
 import {Component,OnInit} from 'angular2/core'
-import {Router} from "angular2/router";
+import {Router,RouteParams} from "angular2/router";
 import {CrisisService} from "./crisis.service";
 
 @Component({
     template: `
     <h2>CRISIS LIST</h2>
         <ul>
-          <li [class.selected]="crisis === selectedCrisis" *ngFor="#crisis of crisisList" (click)="onSelect(crisis)">
+          <li [class.selected]="isSelected(crisis)" *ngFor="#crisis of crisisList" (click)="onSelect(crisis)">
             <span class="badge">{{crisis.id}}</span> {{crisis.name}}
           </li>
         </ul>
@@ -17,9 +17,13 @@ import {CrisisService} from "./crisis.service";
 })
 export class CrisisListComponent implements OnInit{
 
+    private _selectedId: number;
     public crisisList: Crisis[];
 
-    constructor(private _router: Router,private _service: CrisisService){
+    constructor(private _router: Router,
+                private _service: CrisisService,
+                routeParams: RouteParams){
+        this._selectedId = +routeParams.get('id');
     }
 
     ngOnInit(){
@@ -28,5 +32,9 @@ export class CrisisListComponent implements OnInit{
 
     onSelect(crisis: Crisis){
         this._router.navigate(['CrisisDetail', {id: crisis.id}]);
+    }
+
+    isSelected(hero:Hero){
+        return hero.id===this._selectedId;
     }
 }
