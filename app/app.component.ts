@@ -10,17 +10,21 @@ import {HeroDetailComponent} from './heroes/hero-detail.component';
 import {HeroListComponent} from "./heroes/hero-list.component";
 import {HeroService} from "./heroes/hero.service";
 import {CrisisCenterComponent} from "./crisis-center/crisis-center-component";
+import {HighlightDirective} from "./highlight.directive";
+import {UnlessDirective} from "./unless.directive";
 
 @Component({
     selector: 'my-app',
-    directives: [ROUTER_DIRECTIVES],
+    directives: [ROUTER_DIRECTIVES, HighlightDirective, UnlessDirective],
     providers: [HeroService],
     template: `
     <h1>Component Router</h1>
     <nav>
-        <a [routerLink]="['CrisisCenter']">Crisis Center</a>
-        <a [routerLink]="['Heroes']">Heroes</a>
+        <a [routerLink]="['CrisisCenter']" >Crisis Center</a>
+        <a [routerLink]="['Heroes']" >Heroes</a>
     </nav>
+    <h4 *customUnless="condition" [customHighlight]="['lightgreen']" [defaultColor]="'violet'">Highlight me!</h4>
+    <button (click)="toggle()">Toggle Highlight</button>
     <router-outlet></router-outlet>
     `,
     //template: `
@@ -78,5 +82,11 @@ export class AppComponent
     //        this.heroes.push(ref);
     //    }
     //}
+
+    condition:boolean = false;
+
+    toggle(){
+        this.condition = !this.condition;
+    }
 }
 
