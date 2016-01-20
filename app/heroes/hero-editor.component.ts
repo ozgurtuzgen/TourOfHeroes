@@ -8,13 +8,14 @@ import {Hero} from "./hero";
 @Component({
     selector: 'hero-editor',
     providers: [RestoreService],
+    properties: ['hero'],
     template:`
     <div>
         <span>Name:</span>
         <input [(ngModel)] = "hero.name"/>
         <div>
-            <button (click)="onSaved">save</button>
-            <button (click)="onCanceled">cancel</button>
+            <button (click)="onSaved()">save</button>
+            <button (click)="onCanceled()">cancel</button>
         </div>
     </div>
     `
