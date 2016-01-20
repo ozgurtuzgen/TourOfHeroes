@@ -4,6 +4,7 @@
 import {Component,OnInit} from 'angular2/core'
 import {Router,RouteParams} from "angular2/router";
 import {CrisisService} from "./crisis.service";
+import {Hero} from "../heroes/hero";
 
 @Component({
     template: `
