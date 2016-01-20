@@ -9,7 +9,7 @@ import {HeroEditorComponent} from "./hero-editor.component";
 import {EditItem} from "../edit-item";
 import {Hero} from "./hero";
 
-//(click)="onSelect(hero)" [class.selected]="hero === selectedHero"
+
 
 @Component({
     selector: 'heroes-list',
@@ -19,7 +19,8 @@ import {Hero} from "./hero";
         <li *ngFor="#editItem of heroes">
           <hero-card
             [hidden]="editItem.editing"
-            [hero]="editItem.item">
+            [hero]="editItem.item"
+            (click)="onSelect(editItem.item)">
           </hero-card>
           <button
             [hidden]="editItem.editing"
@@ -51,9 +52,9 @@ export class HeroListComponent implements OnInit{
         this.heroes = this._service.getHeroesArray().map(item=> new EditItem(item));
     }
 
-    //onSelect(hero: Hero){
-    //    this._router.navigate(['HeroDetail', {id: hero.id}]);
-    //}
+    onSelect(hero: Hero){
+        this._router.navigate(['HeroDetail', {id: hero.id}]);
+    }
 
     onSaved(editItem:EditItem<Hero>, updatedHero:Hero){
         editItem.item = updatedHero;

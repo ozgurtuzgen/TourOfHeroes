@@ -3,6 +3,7 @@
  */
 import {Injectable} from 'angular2/core';
 import {HEROES} from './mock-heros';
+import {Hero} from "./hero";
 
 @Injectable()
 export class HeroService{
@@ -15,15 +16,15 @@ export class HeroService{
         return HEROES;
     }
 
-    //getHeroesInstant() {
-    //    return new Promise<Hero[]>(resolve =>
-    //        setTimeout(()=>resolve(HEROES), 2000) // 2 seconds
-    //    );
-    //}
+    getHeroesInstant() {
+        return new Promise<Hero[]>(resolve =>
+            setTimeout(()=>resolve(HEROES), 2000) // 2 seconds
+        );
+    }
 
-    //getHero(id: number|string){
-    //    return heroesPromise.then(heroes=> heroes.filter(h=> h.id === +id)[0]);
-    //}
+    getHero(id: number|string){
+        return heroesPromise.then(heroes=> heroes.filter(h=> h.id === +id)[0]);
+    }
 
 }
 
