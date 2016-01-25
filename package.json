@@ -5,7 +5,10 @@
     "tsc": "tsc",
     "tsc:w": "tsc -w",
     "lite": "lite-server",
-    "start": "concurrent \"npm run tsc:w\" \"npm run lite\" "
+    "live": "live-server",
+    "start": "concurrent \"npm run tsc:w\" \"npm run lite\" ",
+    "startAlternative": "concurrent \"npm run tsc:w\" \"npm run live\" ",
+    "test": "live-server --open=unit-tests.html"
   },
   "license": "ISC",
   "dependencies": {

@@ -2,12 +2,13 @@ import {Component,OnInit} from 'angular2/core';
 import {Hero} from './hero';
 import {HeroService} from "./hero.service";
 import {Router,RouteParams} from "angular2/router";
+import {InitCapsPipe} from "../init-caps.pipe";
 
 @Component({
     //selector:'my-hero-detail',
     template: `
     <div *ngIf="hero">
-        <h2>{{hero.name}} details!</h2>
+        <h2>{{hero.name | initCaps}} details!</h2>
         <div><label>id: </label>{{hero.id}}</div>
         <div>
             <label>name: </label>
@@ -16,7 +17,8 @@ import {Router,RouteParams} from "angular2/router";
         <button (click) = "gotoHeroes()">Back</button>
     </div>
     `,
-    inputs: ['hero']
+    inputs: ['hero'],
+    pipes: [InitCapsPipe]
 })
 
 export class HeroDetailComponent implements OnInit{
