@@ -14,4 +14,4 @@ describe("1st tests", ()=>{
 
         expect(hero.id).toEqual(1);
     });
-})
+});
