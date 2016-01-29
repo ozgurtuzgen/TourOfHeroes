@@ -15,7 +15,7 @@ describe('InitCapsPipe',()=>{
         expect(pipe.transform('abc')).toEqual('Abc');
     });
 
-    it('transforms "abc def" to "Abc Def"', () => {
+    it('transforms "aBc def" to "Abc Def"', () => {
         expect(pipe.transform('abc def')).toEqual('Abc Def');
     });
 

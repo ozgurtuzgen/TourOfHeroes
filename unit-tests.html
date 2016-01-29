@@ -11,7 +11,9 @@
 </head>
 <body>
 <!-- #1. add the system.js and angular libraries -->
+<script src="node_modules/angular2/bundles/angular2-polyfills.min.js"></script>
 <script src="node_modules/systemjs/dist/system.src.js"></script>
+<script src="node_modules/rxjs/bundles/Rx.js"></script>
 <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
 <script>
     // #2. Configure systemjs to use the .js extension
@@ -24,7 +26,7 @@
     // #3. Import the spec file explicitly
     Promise.all([
                 System.import('app/tests/1st.spec'),
-//                System.import('app/tests/init-caps-pipe.spec')
+                System.import('app/tests/init-caps-pipe.spec')
             ])
 
             // #4. wait for all imports to load ...
